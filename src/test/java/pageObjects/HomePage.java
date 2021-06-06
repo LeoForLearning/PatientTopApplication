@@ -44,9 +44,10 @@ public class HomePage extends Reusables {
 		StartApplication(browser);
 	}
 
-	public void enterUrl() {
+	public void enterUrl() throws InterruptedException {
  
 		EnterURL(env);
+		WaitForPageLoad(driver)
 	}
 
 	public void enterPractiseName(String name) throws InterruptedException {
