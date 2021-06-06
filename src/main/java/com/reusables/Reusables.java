@@ -209,6 +209,17 @@ public class Reusables {
 	        } catch (WebDriverException e) {
 				System.out.println(e.getStackTrace());
 	        }
-	    }	  
+	    }
+	
+	public static void WaitForPageLoad(WebDriver driver) throws InterruptedException {
+	        Thread.sleep(1000);
+	        ExpectedCondition<Boolean> pageLoadCondition = new ExpectedCondition<Boolean>() {
+	            public Boolean apply(WebDriver driver) {
+	                return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+	            }
+	        };
+	        WebDriverWait wait = new WebDriverWait(driver, 30);
+	        wait.until(pageLoadCondition);
+	    }
 	  
 }
